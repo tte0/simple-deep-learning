@@ -70,3 +70,13 @@ def plot_class_distribution(y_true, y_pred, classes):
     ax2.set_title('Predicted Class Distribution')
 
     plt.show()
+
+
+def plot_weight_recognition(weights):
+    plt.figure(figsize=(15, 3))
+    for i, idx in enumerate(weights.shape):
+        #plt.subplot(1, num_samples, i + 1)
+        plt.imshow(weights[:, idx].reshape(28, 28), cmap='red')
+        plt.title(f'Neuron {i}')
+        plt.axis('off')
+    plt.show()
