@@ -6,7 +6,17 @@ import copy
 # PARAMETER INITIALIZATION
 #
 
-def initialize_parameters_deep(layers_dims, param_init_scale):
+def initialize_parameters(layers_dims, param_init_scale, initialization_type):
+    parameters = {}
+    if initialization_type == "random_initialization":
+        parameters = random_initialization(layers_dims, param_init_scale)
+    elif initialization_type == "he_initialization":
+        parameters = he_initialization(layers_dims)
+    else:
+        return -1
+    return parameters
+
+def random_initialization(layers_dims, param_init_scale):
     parameters = {}
     for l in range(1, len(layers_dims)):
         parameters["W" + str(l)] = np.random.randn(layers_dims[l], layers_dims[l-1]) * param_init_scale
@@ -22,6 +32,14 @@ def initialize_velocity(parameters):
         velocities["db" + str(l + 1)] = np.zeros_like(parameters["b" + str(l + 1)])
     return velocities
 
+# He initialization
+def he_initialization(layers_dims):
+    parameters = {}
+    for l in range(1, len(layers_dims)):
+        std = np.sqrt(2.0 / layers_dims[l-1])
+        parameters["W" + str(l)] = np.random.normal(0.0, std, (layers_dims[l], layers_dims[l-1]))
+        parameters["b" + str(l)] = np.zeros((layers_dims[l], 1))
+    return parameters
 
 #
 # LEARNING FUNCTIONS
@@ -63,6 +81,9 @@ def linear_activation_forward(A_prev, W, b, activation):
     elif activation == "relu":
         Z = (np.dot(W, A_prev)) + b
         A = relu(Z)
+    elif activation == "leaky_relu":
+        Z = (np.dot(W, A_prev)) + b
+        A = leaky_relu(Z)
     else:
         Z, A = -1
     cache = (A_prev, W, b, Z)
@@ -94,6 +115,8 @@ def linear_activation_backward(dA, cache, activation):
         dZ = dA * sigmoid_prime(Z)
     elif activation == "relu":
         dZ = dA * relu_prime(Z)
+    elif activation == "leaky_relu":
+        dZ = dA * leaky_relu_prime(Z)
     else:
         dZ = -1
     dA_prev = np.dot(W.T, dZ) #  dA_prev.shape = (n[l-1], m) dZ.shape = (n[l], m) W.shape = (n[l], n[l-1])
@@ -177,18 +200,28 @@ def sigmoid(Z):
     return A
 
 
+def sigmoid_prime(Z):
+    return sigmoid(Z) * (1 - sigmoid(Z))
+
+
 def relu(Z):
     A = np.maximum(Z, 0)
     return A
 
 
-def sigmoid_prime(Z):
-    return sigmoid(Z) * (1 - sigmoid(Z))
-
-
 def relu_prime(Z):
-    Z = np.where(Z > 0, 1, 0)
-    return Z
+    Z_prime = np.where(Z > 0, 1, 0)
+    return Z_prime
+
+
+def leaky_relu(Z, neg_slope=0.01):
+    A = np.maximum(Z, Z*neg_slope)
+    return A
+
+
+def leaky_relu_prime(Z, neg_slope=0.01):
+    Z_prime = np.where(Z > 0, 1, neg_slope)
+    return Z_prime
 
 
 def softmax(A):
@@ -231,9 +264,9 @@ def random_mini_batches(X, Y, batch_size):
     return mini_batches
 
 
-def L_layer_model(X, Y, layers_dims, activations, learning_function="gradient_descent", loss_function="mean_squared_error", learning_rate=0.00075, use_softmax=True, num_iterations=1000, param_scale=0.01, batch_size=32, momentum_factor=0.2, print_cost=False):
+def L_layer_model(X, Y, layers_dims, activations, parameter_initialization_type="random_initialization", loss_function="mean_squared_error", learning_rate=0.00075, use_softmax=True, num_iterations=1000, param_scale=0.01, batch_size=32, momentum_factor=0.2, print_cost=False):
     costs = []  # keep track of cost
-    parameters = initialize_parameters_deep(layers_dims, param_scale)
+    parameters = initialize_parameters(layers_dims, param_scale, parameter_initialization_type)
     if momentum_factor > 0:
         velocities = initialize_velocity(parameters)
     m = X.shape[1]  # Total training examples

@@ -72,11 +72,22 @@ def plot_class_distribution(y_true, y_pred, classes):
     plt.show()
 
 
-def plot_weight_recognition(weights):
-    plt.figure(figsize=(15, 3))
-    for i, idx in enumerate(weights.shape):
-        #plt.subplot(1, num_samples, i + 1)
-        plt.imshow(weights[:, idx].reshape(28, 28), cmap='red')
+def visualize_first_layer_weights(weights, input_shape=(28, 28), n_cols=8):
+    num_neurons = weights.shape[0]
+    weight_images = weights.T.reshape(num_neurons, *input_shape)
+
+    n_rows = int(np.ceil(num_neurons / n_cols))
+
+    plt.figure(figsize=(2 * n_cols, 2 * n_rows))
+
+    vmax = np.max(np.abs(weight_images))
+    vmin = -vmax
+
+    for i in range(num_neurons):
+        plt.subplot(n_rows, n_cols, i + 1)
+        plt.imshow(weight_images[i], cmap='RdBu', vmin=vmin, vmax=vmax)
         plt.title(f'Neuron {i}')
         plt.axis('off')
+
+    plt.tight_layout()
     plt.show()
