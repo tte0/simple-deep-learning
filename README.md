@@ -5,6 +5,8 @@ This project aims to be a small sized deep learning toolkit for experimenting an
 - Add issue types and an issue template
 - Add guidelines and rules to repository README
 - Switch project paradigm from functional to object oriented, in favor of a more modular structure
-- Implement Adam and AdaMax optimization functions
+- Implement ~~Adam~~ and AdaMax optimization functions
 - Improve the readability of the example file 'Image_Recognition.py'
+- Add function descriptions
+- Add more activation functions
 - ...
