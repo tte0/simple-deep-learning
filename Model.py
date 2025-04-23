@@ -1,27 +1,7 @@
 import copy
 import numpy as np
 
-# Assuming Utils.py exists and contains this function
-# from Utils import random_mini_batches
-def random_mini_batches(X, Y, batch_size):
-    m = X.shape[1]
-    mini_batches = []
-    permutation = list(np.random.permutation(m))
-    X_shuffled = X[:, permutation]
-    Y_shuffled = Y[:, permutation].reshape(Y.shape[0], m)
-
-    num_complete_batches = m // batch_size
-    for k in range(num_complete_batches):
-        X_batch = X_shuffled[:, k * batch_size: (k + 1) * batch_size]
-        Y_batch = Y_shuffled[:, k * batch_size: (k + 1) * batch_size]
-        mini_batches.append((X_batch, Y_batch))
-
-    if m % batch_size != 0:
-        X_batch = X_shuffled[:, num_complete_batches * batch_size:]
-        Y_batch = Y_shuffled[:, num_complete_batches * batch_size:]
-        mini_batches.append((X_batch, Y_batch))
-    return mini_batches
-
+from Utils import random_mini_batches
 
 class Layer:
     def __init__(self, num_neurons, num_neurons_previous, activation_function, initialization, optimizer_template):
