@@ -10,12 +10,12 @@ private:
     normal_distribution<double> distribution;
 
 public:
-    RandomInitializer(double parameter_initialization_scale=0.01):
+    RandomInitializer(const double& parameter_initialization_scale=0.01):
         param_init_scale(parameter_initialization_scale),
         rng(rd()),
         distribution(0, parameter_initialization_scale) {}
 
-    vector<vector<double>> initialize_weights(int num_neurons,int num_neurons_previous){
+    vector<vector<double>> initialize_weights(const size_t& num_neurons,const size_t& num_neurons_previous){
         vector<vector<double>> weights(num_neurons, vector<double>(num_neurons_previous));
         for(int i = 0; i < num_neurons; i++){
             for(int j = 0; j < num_neurons_previous; j++){
@@ -25,7 +25,7 @@ public:
         return weights;
     }
 
-    vector<double> initialize_biases(int num_neurons) {
+    vector<double> initialize_biases(const int& num_neurons) {
         return vector<double>(num_neurons, 0);
     }
 
@@ -40,7 +40,7 @@ private:
 public:
     HeInitializer() : rng(rd()) {}
 
-    vector<vector<double>> initialize_weights(int num_neurons,int num_neurons_previous){
+    vector<vector<double>> initialize_weights(const size_t& num_neurons,const size_t& num_neurons_previous){
         double std = sqrt(2.0 / double(num_neurons_previous));
         vector<vector<double>> weights(num_neurons, vector<double>(num_neurons_previous));
         for(int i = 0; i < num_neurons; i++){
@@ -51,7 +51,7 @@ public:
         return weights;
     }
 
-    vector<double> initialize_biases(int num_neurons) {
+    vector<double> initialize_biases(const size_t& num_neurons) {
         return vector<double>(num_neurons, 0);
     }
 };
