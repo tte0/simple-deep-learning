@@ -7,6 +7,7 @@ This project aims to be a small sized deep learning toolkit for experimenting an
 - Implement AdaMax optimization function
 - Improve the readability of the example file 'Image_Recognition.py'
 - Add function descriptions
+- Add a requirements.txt file
 - ...
 
 # Completed:
