@@ -14,49 +14,49 @@ namespace VectorOps {
     // Element-wise addition            DONE
     std::vector<std::vector<double>>    add(const std::vector<std::vector<double>>& a, const std::vector<std::vector<double>>& b);
 
-    // Element-wise subtraction
+    // Element-wise subtraction         DONE
     std::vector<std::vector<double>>    subtract(const std::vector<std::vector<double>>& a, const std::vector<std::vector<double>>& b);
 
-    // Scalar multiplication
+    // Scalar multiplication            DONE
     std::vector<std::vector<double>>    multiply(const std::vector<std::vector<double>>& a, double scalar);
 
-    // Element-wise multiplication
+    // Element-wise multiplication      DONE
     std::vector<std::vector<double>>    multiply(const std::vector<std::vector<double>>& a, const std::vector<std::vector<double>>& b);
 
-    // Element-wise division
+    // Element-wise division            DONE
     std::vector<std::vector<double>>    divide(const std::vector<std::vector<double>>& a, const std::vector<std::vector<double>>& b);
 
-    // Element-wise square
+    // Element-wise square              DONE
     std::vector<std::vector<double>>    square(const std::vector<std::vector<double>>& a);
 
-    // Element-wise sqrt
+    // Element-wise sqrt                DONE
     std::vector<std::vector<double>>    sqrt(const std::vector<std::vector<double>>& a);
 
-    // Element-wise exponential
+    // Element-wise exponential         DONE
     std::vector<std::vector<double>>    exp(const std::vector<std::vector<double>>& a);
 
-    // Element-wise logarithm
+    // Element-wise logarithm           DONE
     std::vector<std::vector<double>>    log(const std::vector<std::vector<double>>& a);
 
-    // Element-wise sigmoid
+    // Element-wise sigmoid             DONE
     std::vector<std::vector<double>>    sigmoid(const std::vector<std::vector<double>>& a);
 
-    // Element-wise tanh
+    // Element-wise tanh                DONE
     std::vector<std::vector<double>>    tanh(const std::vector<std::vector<double>>& a);
 
-    // Scalar max
+    // Scalar max                       DONE
     std::vector<std::vector<double>>    max(const std::vector<std::vector<double>>& a, double scalar);
 
-    // Element-wise max
+    // Element-wise max                 DONE
     std::vector<std::vector<double>>    max(const std::vector<std::vector<double>>& a, const std::vector<std::vector<double>>& b);
 
     // Mean along axis=1                DONE
     std::vector<double>                 mean_axis1(const std::vector<std::vector<double>>& a);
 
-    // Sum of all elements
+    // Sum of all elements              DONE
     double                              sum(const std::vector<std::vector<double>>& a);
 
-    // Sum of a vector
+    // Sum of a vector                  DONE
     double                              sum(const std::vector<double>& a);
 
     // Sum along axis=0 with keepdims   DONE
