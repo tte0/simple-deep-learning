@@ -8,14 +8,11 @@
 
 namespace VectorOps {
 
-    // Scalar addition
+    // Scalar addition                  DONE
     std::vector<std::vector<double>>    add(const std::vector<std::vector<double>>& a, double scalar);
 
-    // Element-wise addition
+    // Element-wise addition            DONE
     std::vector<std::vector<double>>    add(const std::vector<std::vector<double>>& a, const std::vector<std::vector<double>>& b);
-
-    // Scalar subtraction
-    std::vector<std::vector<double>>    subtract(const std::vector<std::vector<double>>& a, double scalar);
 
     // Element-wise subtraction
     std::vector<std::vector<double>>    subtract(const std::vector<std::vector<double>>& a, const std::vector<std::vector<double>>& b);
@@ -25,9 +22,6 @@ namespace VectorOps {
 
     // Element-wise multiplication
     std::vector<std::vector<double>>    multiply(const std::vector<std::vector<double>>& a, const std::vector<std::vector<double>>& b);
-
-    // Scalar division
-    std::vector<std::vector<double>>    divide(const std::vector<std::vector<double>>& a, double scalar);
 
     // Element-wise division
     std::vector<std::vector<double>>    divide(const std::vector<std::vector<double>>& a, const std::vector<std::vector<double>>& b);
@@ -56,7 +50,7 @@ namespace VectorOps {
     // Element-wise max
     std::vector<std::vector<double>>    max(const std::vector<std::vector<double>>& a, const std::vector<std::vector<double>>& b);
 
-    // Mean along axis=1
+    // Mean along axis=1                DONE
     std::vector<double>                 mean_axis1(const std::vector<std::vector<double>>& a);
 
     // Sum of all elements
@@ -65,7 +59,7 @@ namespace VectorOps {
     // Sum of a vector
     double                              sum(const std::vector<double>& a);
 
-    // Sum along axis=0 with keepdims
+    // Sum along axis=0 with keepdims   DONE
     std::vector<std::vector<double>>    sum_axis0(const std::vector<std::vector<double>>& a);
 }
 

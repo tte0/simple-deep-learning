@@ -20,7 +20,7 @@ public:
     vector<vector<double>> cost_prime(const vector<vector<double>>& AL, const vector<vector<double>>& Y){
         size_t m = Y[0].size();
         vector<vector<double>> diff = VectorOps::subtract(Y, AL);
-        vector<vector<double>> cost_derivative = VectorOps::divide(diff, -0.5 * m);
+        vector<vector<double>> cost_derivative = VectorOps::multiply(diff, 2 * (1.0 / m));
         return cost_derivative;
     }
 };
