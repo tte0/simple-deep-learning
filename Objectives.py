@@ -26,7 +26,7 @@ class CrossEntropyLoss:
     def cost(self, AL, Y):
         A = self.softmax(AL) if self.use_softmax else AL
         m = Y.shape[1]
-        cost = -np.sum(Y*np.log(AL)) / m
+        cost = -np.sum(Y*np.log(A)) / m
         cost = np.squeeze(cost)
         return cost
 
