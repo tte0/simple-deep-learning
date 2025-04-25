@@ -13,6 +13,9 @@ This project aims to be a small sized deep learning toolkit for experimenting an
 - Add validation(dev) sets and accuracy measures during training
 - ...
 
+# Doing
+- C++ port of the original Python code
+
 # Completed:
 - Switch project paradigm to oop from fp
 - Implement Adam optimizer
