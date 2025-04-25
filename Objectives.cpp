@@ -14,6 +14,7 @@ public:
         vector<vector<double>> squared_diff = VectorOps::square(diff);
         vector<double> mean_vals = VectorOps::mean_axis1(squared_diff);
         double sum_val = VectorOps::sum(mean_vals) / AL.size();
+        return sum_val;
     }
 
     vector<vector<double>> cost_prime(const vector<vector<double>>& AL, const vector<vector<double>>& Y){
@@ -58,6 +59,6 @@ public:
         size_t m = Y[0].size();
     
         return use_softmax ? VectorOps::subtract(AL, Y) :
-                             VectorOps::neg_divide(Y, VectorOps::multiply(AL, m));
+                             VectorOps::multiply(VectorOps::divide(Y, VectorOps::multiply(AL, m)), -1);
     }
 };

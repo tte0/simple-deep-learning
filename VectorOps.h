@@ -35,6 +35,9 @@ namespace VectorOps {
     // Element-wise square
     std::vector<std::vector<double>>    square(const std::vector<std::vector<double>>& a);
 
+    // Element-wise sqrt
+    std::vector<std::vector<double>>    sqrt(const std::vector<std::vector<double>>& a);
+
     // Element-wise exponential
     std::vector<std::vector<double>>    exp(const std::vector<std::vector<double>>& a);
 
