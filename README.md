@@ -8,6 +8,9 @@ This project aims to be a small sized deep learning toolkit for experimenting an
 - Improve the readability of the example file 'Image_Recognition.py'
 - Add function descriptions
 - Add a requirements.txt file
+- Add GPU acceleration using CuPy
+- Add weight decay (Cost function + frobenius norm)
+- Add validation(dev) sets and accuracy measures during training
 - ...
 
 # Completed:
