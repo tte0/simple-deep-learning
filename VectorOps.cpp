@@ -3,9 +3,20 @@ using namespace std;
 
 // Helper functions for vector operations
 namespace VectorOps {
+
+    // Scalar addition
+    vector<vector<double>> add(const vector<vector<double>>& a, double scalar){
+        vector<vector<double>> result(a.size(), vector<double>(a[0].size()));
+        for(size_t i = 0; i < a.size(); i++){
+            for(size_t j = 0; j < a[0].size(); j++){
+                result[i][j]=a[i][j]+scalar;
+            }
+        }
+        return result;
+    }
+
     // Element-wise subtraction
-    vector<vector<double>> subtract(const vector<vector<double>>& a, 
-                                             const vector<vector<double>>& b) {
+    vector<vector<double>> subtract(const vector<vector<double>>& a, const vector<vector<double>>& b) {
         vector<vector<double>> result(a.size(), vector<double>(a[0].size()));
         for (size_t i = 0; i < a.size(); ++i) {
             for (size_t j = 0; j < a[0].size(); ++j) {
@@ -103,6 +114,17 @@ namespace VectorOps {
 
     // Element-wise exponential
     vector<vector<double>> exp(const vector<vector<double>>& a) {
+        vector<vector<double>> result(a.size(), vector<double>(a[0].size()));
+        for (size_t i = 0; i < a.size(); ++i) {
+            for (size_t j = 0; j < a[0].size(); ++j) {
+                result[i][j] = std::exp(a[i][j]);
+            }
+        }
+        return result;
+    }
+
+    // Element-wise negative exponential
+    vector<vector<double>> neg_exp(const vector<vector<double>>& a) {
         vector<vector<double>> result(a.size(), vector<double>(a[0].size()));
         for (size_t i = 0; i < a.size(); ++i) {
             for (size_t j = 0; j < a[0].size(); ++j) {
